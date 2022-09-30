@@ -21,9 +21,9 @@ import java.util.Optional;
 
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RequestMapping ("/parking-spot")
-@Api(value="API REST parkingcar")
+@Api(value="API REST parking-car")
 
 public class ParkingSpotController {
 
