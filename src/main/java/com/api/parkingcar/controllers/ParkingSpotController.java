@@ -23,7 +23,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping ("/parking-spot")
-@Api(value="API REST parking-car")
+@Api(value="API REST parkingcar")
 
 public class ParkingSpotController {
 

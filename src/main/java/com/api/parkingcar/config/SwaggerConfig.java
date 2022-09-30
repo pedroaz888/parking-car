@@ -4,6 +4,7 @@ package com.api.parkingcar.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -41,7 +42,7 @@ public class SwaggerConfig {
                 "Terms of Service",
                 new Contact("Pedro Azevedo", "https://github.com/pedroaz888",
                         "pdegutty@gmail.com"),
-                "Apache License",
+                "Apache License Version 2.0",
                 "https://www.apache.org/license.html", new ArrayList<VendorExtension>()
 
         );
