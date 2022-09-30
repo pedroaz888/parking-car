@@ -11,10 +11,9 @@ import springfox.documentation.service.VendorExtension;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+import springfox.documentation.builders.PathSelectors;
 import java.util.ArrayList;
 
-import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
 @EnableSwagger2
@@ -25,7 +24,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.api.parkingcar"))
-                .paths(regex("/parking-spot.*"))
+                .paths(PathSelectors.regex("/parking-spot.*"))
                 .build()
                 .apiInfo(metaInfo());
 
