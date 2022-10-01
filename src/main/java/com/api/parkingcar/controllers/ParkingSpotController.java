@@ -22,15 +22,15 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping ("/parking-spot")
-@Api(value="API REST parkingcar")
+@RequestMapping ("/api")
+@Api(value="API REST parking")
 
 public class ParkingSpotController {
 
     @Autowired
     ParkingSpotService parkingSpotService;
 
-    @PostMapping
+    @PostMapping("/parking-spot")
     @ApiOperation(value="Salva as vagas")
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
 
@@ -54,7 +54,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
     }
 
-    @GetMapping
+    @GetMapping("/parking-spot/listar")
     @ApiOperation(value="Lista todos os registros de vagas")
     public ResponseEntity<Page<ParkingSpotModel>>getAllParkingSpots(
             @PageableDefault(page=0, size=10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
@@ -62,7 +62,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(pageable));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/parking-spot/{id}")
     @ApiOperation(value="Busca infos da vaga pelo ID")
     public ResponseEntity<Object>getOneParkingSpots(@PathVariable(value = "id") Long id){
 
@@ -75,7 +75,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("parking-spot/{id}")
     @ApiOperation(value="Deleta as vagas")
     public ResponseEntity<Object>deleteParkingSpots(@PathVariable(value = "id") Long id){
 
@@ -88,7 +88,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.OK).body("deletado com sucesso!");
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("parking-spot/{id}")
     @ApiOperation(value="Atualiza as vagas")
     public ResponseEntity<Object>updateParkingSpot(@PathVariable(value="id")Long id,
                                                 @RequestBody @Valid ParkingSpotDto parkingSpotDto){
