@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import java.security.Principal;
 import java.util.Optional;
 
 
@@ -54,12 +56,25 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
     }
 
-    @GetMapping("/parking-spot/listar")
+
+/*    @GetMapping("/parking-spot/listar")
     @ApiOperation(value="Lista todos os registros de vagas")
     public ResponseEntity<Page<ParkingSpotModel>>getAllParkingSpots(
             @PageableDefault(page=0, size=10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
 
+
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(pageable));
+    }
+    */
+
+
+    @GetMapping("/parking-spot/listar")
+    @ApiOperation(value="Lista todos os registros de vagas")
+    public ResponseEntity<Page<ParkingSpotModel>>getAllParkingSpots(Principal principal){
+
+        PageRequest paginacao = PageRequest.of(0,7);
+
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(paginacao));
     }
 
     @GetMapping("/parking-spot/{id}")
