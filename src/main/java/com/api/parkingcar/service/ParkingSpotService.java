@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -36,8 +37,8 @@ public class ParkingSpotService {
         return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
     }
 
-    public Page<ParkingSpotModel> findAll (Pageable sort){
-        return parkingSpotRepository.findAll(sort );
+    public List<ParkingSpotModel> findAll(){
+        return parkingSpotRepository.findAll();
     }
 
     public Optional<ParkingSpotModel> findById(Long id){
