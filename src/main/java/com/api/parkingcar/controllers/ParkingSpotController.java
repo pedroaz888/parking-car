@@ -65,9 +65,9 @@ public class ParkingSpotController {
 
     @GetMapping("/parking-spot/listar")
     @ApiOperation(value="Lista todos os registros de vagas")
-    public ResponseEntity<List<ParkingSpotModel>>getAllParkingSpots(){
+    public List<ParkingSpotModel>getAllParkingSpots(){
 
-        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll());
+        return parkingSpotService.findAll();
     }
 
     @GetMapping("/parking-spot/{id}")
