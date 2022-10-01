@@ -72,6 +72,7 @@ public class ParkingSpotController {
 
     @GetMapping("/parking-spot/{id}")
     @ApiOperation(value="Busca infos da vaga pelo ID")
+    @ResponseBody
     public ResponseEntity<Object>getOneParkingSpots(@PathVariable(value = "id") Long id){
 
         Optional<ParkingSpotModel>parkingSpotModelOptional = parkingSpotService.findById(id);
