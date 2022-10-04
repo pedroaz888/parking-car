@@ -117,7 +117,7 @@ public class ParkingSpotController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vaga não encontrada!");
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
+       return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }
 
     @DeleteMapping("parking-spot/{id}")
