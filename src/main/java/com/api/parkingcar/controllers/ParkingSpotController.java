@@ -113,7 +113,7 @@ public class ParkingSpotController {
 
         Optional<ParkingSpotModel>parkingSpotModelOptional = parkingSpotService.findById(id);
 
-        if(parkingSpotModelOptional.isPresent()){
+        if(!parkingSpotModelOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vaga não encontrada!");
         }
 
