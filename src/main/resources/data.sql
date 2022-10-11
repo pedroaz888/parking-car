@@ -1,5 +1,0 @@
-INSERT INTO TB_PARKING_SPOT (parking_Spot_Number, license_Plate_Car, brand_Car, model_Car, color_Car, responsible_Name, apartment, block) VALUES('216', 'EYK8364', 'FIAT','Doblo', 'cinza', 'Pedro','2','888');
-INSERT INTO TB_PARKING_SPOT (parking_Spot_Number, license_Plate_Car, brand_Car, model_Car, color_Car, responsible_Name, apartment, block) VALUES('24', 'EPQ2377', 'FIAT','Uno', 'branco', 'Joe','3','987');
-INSERT INTO TB_PARKING_SPOT (parking_Spot_Number, license_Plate_Car, brand_Car, model_Car, color_Car, responsible_Name, apartment, block) VALUES('101', 'EPY8664', 'Nissan','March', 'branco', 'Wilma','43','3');
-INSERT INTO TB_PARKING_SPOT (parking_Spot_Number, license_Plate_Car, brand_Car, model_Car, color_Car, responsible_Name, apartment, block) VALUES('71', 'EEU6532', 'Ford','EcoSport', 'verde', 'John','23','5');
-INSERT INTO TB_PARKING_SPOT (parking_Spot_Number, license_Plate_Car, brand_Car, model_Car, color_Car, responsible_Name, apartment, block) VALUES('43', 'EQU6552', 'Hyundai','SUV', 'preto', 'Carl','11','9');

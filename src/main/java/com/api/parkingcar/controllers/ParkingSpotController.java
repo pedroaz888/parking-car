@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+
+import java.util.UUID;
 import java.util.stream.Collector;
 
 
@@ -36,6 +39,7 @@ public class ParkingSpotController {
 
     @Autowired
     ParkingSpotRepository parkingSpotRepository;
+
 
     @PostMapping("/parking-spot")
     @ApiOperation(value="Salva as vagas")
@@ -63,11 +67,12 @@ public class ParkingSpotController {
 
     @GetMapping("/parking-spot/listar")
     @ApiOperation(value="Lista todos os registros de vagas")
-    public ResponseEntity<Page<ParkingSpotModel>>getAllParkingSpots(Principal principal){
 
-        PageRequest paginacao = PageRequest.of(0,7);
-        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(paginacao));
-    }
+        public ResponseEntity<Page<ParkingSpotModel>>getAllParkingSpots(Principal principal){
+
+            PageRequest paginacao = PageRequest.of(0,7);
+            return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(paginacao));
+        }
 
     @GetMapping("/parking-spot/buscarPorNome")
     @ApiOperation(value="buscar por modelo de carro")
@@ -99,17 +104,9 @@ public class ParkingSpotController {
         }
     }
 
-
- /*   @GetMapping("/parking-spot/listar")
-    @ApiOperation(value="Lista todos os registros de vagas")
-    public ResponseEntity<List<ParkingSpotModel>>getAllParkingSpots(){
-
-        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll());
-    }
-*/
     @GetMapping("/parking-spot/{id}")
     @ApiOperation(value="Busca infos da vaga pelo ID")
-    public ResponseEntity<Object>getOneParkingSpots(@PathVariable(value = "id") Long id){
+    public ResponseEntity<Object>getOneParkingSpots(@PathVariable(value = "id") UUID id){
 
         Optional<ParkingSpotModel>parkingSpotModelOptional = parkingSpotService.findById(id);
 
@@ -122,7 +119,7 @@ public class ParkingSpotController {
 
     @DeleteMapping("parking-spot/{id}")
     @ApiOperation(value="Deleta as vagas")
-    public ResponseEntity<Object>deleteParkingSpots(@PathVariable(value = "id") Long id){
+    public ResponseEntity<Object>deleteParkingSpots(@PathVariable(value = "id") UUID id){
 
         Optional<ParkingSpotModel>parkingSpotModelOptional = parkingSpotService.findById(id);
 
@@ -135,7 +132,7 @@ public class ParkingSpotController {
 
     @PutMapping("parking-spot/{id}")
     @ApiOperation(value="Atualiza as vagas")
-    public ResponseEntity<Object>updateParkingSpot(@PathVariable(value="id")Long id,
+    public ResponseEntity<Object>updateParkingSpot(@PathVariable(value="id")UUID id,
                                                 @RequestBody @Valid ParkingSpotDto parkingSpotDto){
     Optional<ParkingSpotModel>parkingSpotModelOptional = parkingSpotService.findById(id);
         if(!parkingSpotModelOptional.isPresent()){

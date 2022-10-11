@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 
 
 @Repository
-public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, Long> {
+public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, UUID> {
 
      @Query(value = "select p from ParkingSpotModel p where upper (p.modelCar) like %?1%")
      List<ParkingSpotModel> buscarPorNome (String name);

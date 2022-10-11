@@ -1,15 +1,19 @@
 package com.api.parkingcar.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.UUID;
+
 
 @Entity
 @Table(name="TB_PARKING_SPOT")
-public class ParkingSpotModel  {
+public class ParkingSpotModel implements Serializable {
 
+    private static final long SerialVersionUID=1L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private UUID id;
     @Column(name = "parking_Spot_Number", nullable = false)
     private String parkingSpotNumber;
     @Column(name = "license_PlateCar", nullable = false)
@@ -29,11 +33,11 @@ public class ParkingSpotModel  {
     private String block;
 
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
