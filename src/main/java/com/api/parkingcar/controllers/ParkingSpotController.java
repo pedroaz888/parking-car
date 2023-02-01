@@ -66,11 +66,13 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
     }
 
-    @GetMapping("/parking-spot")
-    @ApiOperation(value="Listas as vagas")
-    public ResponseEntity<List<ParkingSpotModel>> getAllParkingSpot(){
+    @GetMapping("/parking-spot/listar")
+    @ApiOperation(value="Lista todos os registros de vagas")
 
-        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll());
+    public ResponseEntity<Page<ParkingSpotModel>>getAllParkingSpots(Principal principal){
+
+        PageRequest paginacao = PageRequest.of(0,7);
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(paginacao));
     }
 
     @GetMapping ("/parking-spot/{id}")
@@ -82,6 +84,23 @@ public class ParkingSpotController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }
+
+
+    @GetMapping("/parking-spot/buscarPorModelodeCarro")
+    @ApiOperation(value="buscar por modelo de carro")
+    public ResponseEntity<List<ParkingSpotModel>> buscarPorNome(@RequestParam(name="name") String name){
+
+        List<ParkingSpotModel> parkingSpotModel = parkingSpotRepository.buscarPorNome(name.toUpperCase());
+
+        if(!parkingSpotModel.equals(name)){
+
+            return new ResponseEntity<List<ParkingSpotModel>>(parkingSpotModel, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<ParkingSpotModel>>(parkingSpotModel,HttpStatus.OK);
+
+    }
+
 
     @DeleteMapping ("/parking-spot/{id}")
     @ApiOperation(value="deletar uma vaga")

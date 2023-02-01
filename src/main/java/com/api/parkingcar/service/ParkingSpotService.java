@@ -27,7 +27,9 @@ public class ParkingSpotService {
     public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {
         return parkingSpotRepository.save(parkingSpotModel);
     }
-    public boolean existsByLicensePlateCar(String licensePlateCar){
+
+
+    public boolean existsByLicensePlateCar (String licensePlateCar){
         return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
     }
 
@@ -38,20 +40,17 @@ public class ParkingSpotService {
     public boolean existsByApartmentAndBlock(String apartment, String block){
         return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
     }
-    @Transactional
-    public List<ParkingSpotModel> findAll() {
-        return parkingSpotRepository.findAll();
+
+    public Page<ParkingSpotModel> findAll(PageRequest sort){
+        return parkingSpotRepository.findAll(sort);
     }
-    @Transactional
+
     public Optional<ParkingSpotModel> findById(UUID id){
         return parkingSpotRepository.findById(id);
     }
+
     @Transactional
     public void delete(ParkingSpotModel parkingSpotModel){
-         parkingSpotRepository.delete(parkingSpotModel);
+        parkingSpotRepository.delete(parkingSpotModel);
     }
-
-
-
-
 }
