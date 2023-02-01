@@ -1,6 +1,6 @@
 # parking-car
 
-CRUD para vagas de estacionamento com validações para vagas, placa e apartamento.
+CRUD para vagas de estacionamento com validações para vaga, placa e apartamento.
 
 > acessar localmente /swagger-ui.html </br>
 
