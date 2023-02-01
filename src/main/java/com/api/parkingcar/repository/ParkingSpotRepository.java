@@ -13,15 +13,17 @@ import java.util.UUID;
 @Repository
 public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, UUID> {
 
-     @Query(value = "select p from ParkingSpotModel p where upper (p.modelCar) like %?1%")
-     List<ParkingSpotModel> buscarPorNome (String name);
+    boolean existsByLicensePlateCar(String licensePlateCar);
+    boolean existsByParkingSpotNumber(String parkingSpotNumber);
+    boolean existsByApartmentAndBlock(String apartment, String block);
 
-     @Query(value = "select p from ParkingSpotModel p where upper (p.responsibleName) like %?1%")
-     List<ParkingSpotModel> buscarPorProprietario (String name);
 
-     boolean existsByLicensePlateCar(String licensePlateCar);
 
-     boolean existsByParkingSpotNumber(String parkingSpotNumber);
+//     @Query(value = "select p from ParkingSpotModel p where upper (p.modelCar) like %?1%")
+//     List<ParkingSpotModel> buscarPorNome (String name);
+//
+//     @Query(value = "select p from ParkingSpotModel p where upper (p.responsibleName) like %?1%")
+//     List<ParkingSpotModel> buscarPorProprietario (String name);
 
-     boolean existsByApartmentAndBlock(String apartment, String block);
+
 }
