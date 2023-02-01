@@ -1,6 +1,8 @@
 # parking-car
 
-CRUD para vagas de estacionamento com alguns filtros específicos
+CRUD para vagas de estacionamento com validações para vagas, placa e apartamento.
 
+> acessar localmente /swagger-ui.html </br>
 
-https://pedro-parking.herokuapp.com/swagger-ui.html
+- usuário - user01
+- senha - 3131
